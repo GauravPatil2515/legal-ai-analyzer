@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexicon AI — Autonomous Legal Intelligence Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css?v=2">
+    <script>
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo);
+            return false;
+        };
+    </script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">LEXICON<span class="brand-accent">.AI</span></span>
+                    <span class="brand-subtitle">Autonomous Legal Intelligence</span>
+                </div>
+            </div>
+
+            <div class="nav-telemetry">
+                <div class="telemetry-pill">
+                    <span class="status-dot pulse-emerald"></span>
+                    <span class="telemetry-label">CUDA ACCELERATED</span>
+                </div>
+                <div class="telemetry-pill">
+                    <span class="telemetry-label">MODELS:</span>
+                    <span class="telemetry-value">Legal-BERT • T5 • DistilBERT</span>
+                </div>
+                <a href="/preview" class="nav-link-btn" title="View Studio Telemetry">
+                    <span>Studio Preview</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-layout">
+        <!-- Hero Section -->
+        <section class="hero-strip">
+            <div class="hero-content">
+                <span class="section-tag">DOCUMENT INTELLIGENCE PIPELINE</span>
+                <h1 class="hero-headline">Contract Audit & Deep Extraction Engine</h1>
+                <p class="hero-subtext">Automated legal classification, entity recognition, clause extraction via Machine Reading Comprehension, and abstractive executive summaries in seconds.</p>
+            </div>
+        </section>
+
+        <!-- Document Intake Card -->
+        <section class="intake-card">
+            <!-- Mode Switcher Tabs -->
+            <div class="tab-header">
+                <div class="tab-group">
+                    <button class="tab-btn active" id="tabUploadBtn" data-target="uploadPane">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="12" y1="18" x2="12" y2="12"/>
+                            <line x1="9" y1="15" x2="12" y2="12"/>
+                            <line x1="15" y1="15" x2="12" y2="12"/>
+                        </svg>
+                        Upload PDF Document
+                    </button>
+                    <button class="tab-btn" id="tabTextBtn" data-target="textPane">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="17" y1="10" x2="3" y2="10"/>
+                            <line x1="21" y1="6" x2="3" y2="6"/>
+                            <line x1="21" y1="14" x2="3" y2="14"/>
+                            <line x1="13" y1="18" x2="3" y2="18"/>
+                        </svg>
+                        Direct Text / Presets
+                    </button>
+                </div>
+
+                <!-- Instant Presets -->
+                <div class="preset-group">
+                    <span class="preset-label">Quick Test Presets:</span>
+                    <button class="preset-chip" data-preset="lease">Commercial Lease</button>
+                    <button class="preset-chip" data-preset="license">SaaS Agreement</button>
+                    <button class="preset-chip" data-preset="nda">Mutual NDA</button>
+                    <button class="preset-chip" data-preset="employment">Employment Offer</button>
+                </div>
+            </div>
+
+            <!-- Tab Pane 1: PDF Upload -->
+            <div class="tab-pane active" id="uploadPane">
+                <div class="drop-zone" id="dropZone" role="button" tabindex="0">
+                    <input type="file" id="file-input" class="sr-only" accept=".pdf,.txt">
+                    <div class="drop-zone-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <div class="drop-zone-primary">
+                        <span class="drop-title">Drop PDF legal agreement here</span>
+                        <span class="drop-sub">or <button type="button" class="browse-link" id="browseTrigger">browse filesystem</button></span>
+                    </div>
+                    <div class="drop-zone-meta">
+                        <span class="meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> In-Memory Parsing</span>
+                        <span class="meta-item">•</span>
+                        <span class="meta-item">PDF & TXT up to 10MB</span>
+                        <span class="meta-item">•</span>
+                        <span class="meta-item">Zero Cloud Data Retention</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Pane 2: Direct Text & Editor -->
+            <div class="tab-pane" id="textPane">
+                <div class="text-editor-wrap">
+                    <textarea id="contractTextarea" class="contract-textarea" placeholder="Paste full legal contract text, clauses, or choose a preset from above..." rows="8"></textarea>
+                    <div class="editor-actions">
+                        <span class="word-counter" id="editorWordCount">0 words</span>
+                        <div class="editor-buttons">
+                            <button type="button" class="btn-tactile btn-ghost" id="clearTextBtn">Clear</button>
+                            <button type="button" class="btn-tactile btn-primary" id="analyzeTextBtn">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                                Run Analysis Pipeline
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress / Status Feed -->
+            <div class="pipeline-status-bar" id="pipelineStatusBar" style="display: none;">
+                <div class="pipeline-progress-track">
+                    <div class="pipeline-progress-fill" id="progressBarFill" style="width: 0%;"></div>
+                </div>
+                <div class="status-meta">
+                    <div class="status-message-wrap">
+                        <span class="spinner-dot"></span>
+                        <span class="status-text" id="statusMessage">Initializing NLP engine...</span>
+                    </div>
+                    <span class="status-percent" id="statusPercent">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empty State Placehoder -->
+        <section class="empty-state" id="emptyStateSection">
+            <div class="empty-card">
+                <div class="empty-icon-ring">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <h3 class="empty-title">No Document Analyzed Yet</h3>
+                <p class="empty-desc">Upload a PDF contract or pick any preset above (*Commercial Lease*, *SaaS Agreement*, *Mutual NDA*) to run the full transformer extraction pipeline.</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Results Bento Dashboard -->
+        <section class="results-dashboard" id="resultsDashboard" style="display: none;">
+            <!-- Top Controls Bar -->
+            <div class="results-top-bar">
+                <div class="results-heading">
+                    <h2 class="results-title" id="resDocName">Analysis Report</h2>
+                    <span class="results-timestamp" id="resTimestamp">Just now</span>
+                </div>
+                <div class="results-actions">
+                    <button class="btn-tactile btn-ghost" id="copySummaryBtn" title="Copy Summary">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy Summary
+                    </button>
+                    <button class="btn-tactile btn-ghost" id="exportJsonBtn" title="Export JSON">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export JSON
+                    </button>
+                    <button class="btn-tactile btn-secondary" id="resetBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        New Document
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="bento-grid">
+                <!-- Cell 1: Executive Summary -->
+                <div class="bento-card col-span-8">
+                    <div class="card-header-clean">
+                        <div class="header-left">
+                            <span class="badge-dot badge-t5"></span>
+                            <h3 class="card-title">Executive Abstractive Summary</h3>
+                            <span class="model-tag">T5-TRANSFORMER</span>
+                        </div>
+                    </div>
+                    <div class="summary-body">
+                        <p class="summary-text" id="resSummaryText">Extracting abstractive summary...</p>
+                    </div>
+                    <div class="card-footer-meta">
+                        <span class="stat-meta" id="resWordCount"><strong id="statWords">0</strong> words analyzed</span>
+                        <span class="stat-meta-divider">•</span>
+                        <span class="stat-meta">Synthesized into executive briefing</span>
+                    </div>
+                </div>
+
+                <!-- Cell 2: Classification & Confidence -->
+                <div class="bento-card col-span-4">
+                    <div class="card-header-clean">
+                        <div class="header-left">
+                            <span class="badge-dot badge-classifier"></span>
+                            <h3 class="card-title">Classification</h3>
+                            <span class="model-tag">LEGAL-BERT</span>
+                        </div>
+                    </div>
+                    <div class="classification-box">
+                        <div class="class-hero">
+                            <span class="class-label">PREDICTED TYPE</span>
+                            <div class="class-name" id="resDocType">Unknown</div>
+                        </div>
+                        <div class="confidence-meter-wrap">
+                            <div class="meter-label-row">
+                                <span>Confidence</span>
+                                <span class="meter-val" id="resConfidenceVal">0%</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" id="resConfidenceFill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <div class="class-scores-list" id="resScoresList">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cell 3: Key Extracted Clauses -->
+                <div class="bento-card col-span-7">
+                    <div class="card-header-clean">
+                        <div class="header-left">
+                            <span class="badge-dot badge-qa"></span>
+                            <h3 class="card-title">Key Legal Clauses</h3>
+                            <span class="model-tag">DISTILBERT QA</span>
+                        </div>
+                        <span class="item-count-badge" id="resClauseCount">0 found</span>
+                    </div>
+                    <div class="clauses-stream" id="resClausesContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Cell 4: Legal Entities Registry -->
+                <div class="bento-card col-span-5">
+                    <div class="card-header-clean">
+                        <div class="header-left">
+                            <span class="badge-dot badge-spacy"></span>
+                            <h3 class="card-title">Legal Entity Registry</h3>
+                            <span class="model-tag">SPACY NER</span>
+                        </div>
+                        <span class="item-count-badge" id="resEntityCount">0 detected</span>
+                    </div>
+                    <!-- Entity Categories -->
+                    <div class="entities-registry" id="resEntitiesContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/app.js?v=2" type="text/javascript"></script>
+</body>
+</html>
